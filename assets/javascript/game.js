@@ -1,6 +1,24 @@
-// Array and variables 
-var rapperSongs = ['pimpin', 'bickenhead', 'kream', 'juicy', 'pissed', 'tempo', 'anaconda', 'starships,', 'drip', 'yuso', 'realer', 'dance', 'ratchet', 'only', 'chunli', 'llc'];
+// Arrays, objects, and variables 
+var rapperSongs = [
+    {songName:'pimpin', songURL:'https://www.youtube.com/watch?v=grrEPabL3Qo'}, 
+    {songName:'bickenhead', songURL:'https://www.youtube.com/watch?v=ZTPhNIKeKgw'}, 
+    {songName:'kream', songURL:'https://www.youtube.com/watch?v=t7lM7Bn16Zg'}, 
+    {songName:'juicy', songURL:'https://www.youtube.com/watch?v=YIALlhlyqO4'}, 
+    {songName:'pissed', songURL:'https://www.youtube.com/watch?v=9O1uBz8SK5w'}, 
+    {songName:'tempo', songURL:'https://www.youtube.com/watch?v=Srq1FqFPwj0'}, 
+    {songName:'anaconda', songURL:'https://www.youtube.com/watch?v=LDZX4ooRsWs'},
+    {songName:'starships,', songURL: 'https://www.youtube.com/watch?v=SeIJmciN8mo'},
+    {songName:'drip', songURL:'https://www.youtube.com/watch?v=H4Hb6HcCm_E'},
+    {songName:'yuso', songURL:'https://www.youtube.com/watch?v=itohm9OYUz4'},
+    {songName:'realer', songURL:'https://www.youtube.com/watch?v=lDWeob50YY8'},
+    {songName:'dance', songURL:'https://www.youtube.com/watch?v=5tTqL79xidY'},
+    {songName:'ratchet', songURL:'https://www.youtube.com/watch?v=5tTqL79xidY'},
+    {songName:'only', songURL:'https://www.youtube.com/watch?v=zXtsGAkyeIo'},
+    {songName:'chunli', songURL:'https://www.youtube.com/watch?v=Wpm07-BGJnE'},
+    {songName:'llc', songURL:'https://www.youtube.com/watch?v=Jv2GAthexF8'}];
 var chosenWord = '';
+var chosenSongName = '';
+var chosenSongURL = '';
 var lettersInWord = [];
 var numberOfBlanks = 0;
 var blanksAndSuccesses = [];
@@ -12,11 +30,13 @@ var guessesRemaining = 10;
 // Functions
 function startGame() {
     chosenWord = rapperSongs[Math.floor(Math.random() * rapperSongs.length)];
-    lettersInWord = chosenWord.split('');
+    chosenSongName = chosenWord.songName;
+    chosenSongURL = chosenWord.songURL;
+    lettersInWord = chosenSongName.split('');
     numberOfBlanks = lettersInWord.length;
 
     // For Testing/debugging 
-    console.log(chosenWord);
+    console.log(chosenSongName);
     console.log(lettersInWord);
     console.log(numberOfBlanks);
 
@@ -45,14 +65,14 @@ function checkLetters(letter) {
     var isLetterInWord = false;
 
     for (var i = 0; i < numberOfBlanks; i++) {
-        if (chosenWord[i] === letter) {
+        if (chosenSongName[i] === letter) {
             isLetterInWord = true;
         }
     }
     // Find where letter is and fill in the blank 
     if(isLetterInWord) {
     for (var i = 0; i < numberOfBlanks; i++) {
-        if(chosenWord[i] === letter) {
+        if(chosenSongName[i] === letter) {
             blanksAndSuccesses[i] = letter;
             }
         }
@@ -74,7 +94,7 @@ function roundComplete() {
     // Check if won 
     if (lettersInWord.toString() == blanksAndSuccesses.toString()) {
         winCount++;
-        alert('Winner!');
+        alert('Winner! The song ' + chosenSongName + ' can be enjoyed at ' + chosenSongURL);
 // Want to play song
 
     // Update counter 
@@ -85,7 +105,7 @@ function roundComplete() {
     // Check if lost 
     else if (guessesRemaining === 0) {
         lossCount++;
-        alert('Loser!');
+        alert('Loser! The song ' + chosenSongName + ' can be enjoyed at ' + chosenSongURL);
 
     // Update counter 
     document.getElementById('lossCounter').innerHTML = lossCount;
@@ -103,9 +123,18 @@ startGame();
 
 document.onkeyup = function(event) {
     var lettersGuessed = String.fromCharCode(event.keyCode).toLowerCase();
-    checkLetters(lettersGuessed);
-    roundComplete();
+    var checkChar = lettersGuessed.match(/^[a-z]+$/);
+    
+    if (checkChar === null) {
+        alert('Please choose a letter!')
+    }
+    else {
+        checkLetters(lettersGuessed);
+        roundComplete();
+    }
 
     // Testing/debugging
     console.log(lettersGuessed);
+    console.log(checkChar);
+    // If wanted to ding them - move checkChar to checkLetters 
 }

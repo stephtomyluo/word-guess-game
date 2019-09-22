@@ -8,60 +8,70 @@
     <!-- Bootstrap CDN  -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body>
+<body style="background-image:url(./assets/images/femalerappers.jpg)">
 
   <div class="container">
 
-    <div class="jumbotron jumbotron-fluid">
-      <h1 class="display-4">Hangwoman</h1>
-        <p class="lead">Press any key to get started!</p>
+    <div class="jumbotron jumbotron-fluid bg-warning">
+      <h1 class="display-4 text-center">Hangwoman</h1>
+        <p class="lead text-center">Press any key to get started!</p>
     </div>
 
     <!-- Where the word will populate -->
     <div class="card">
-      <div class="card-header">
+      <div class="card-header text-center bg-warning">
           <h3>Guess the Current Song</h3>
         </div>
-        <div class="card-body" id="songToGuess">
+        <div class="card-body text-center" id="songToGuess">
           
         </div>
       </div>  
 
     <!-- Will show incorrect letter guesses  -->
-    <div class="card">
+  <div class="row">
+    <div class="col-3">
+    <div class="card bg-warning">
         <div class="card-body">
           Letters Already Guessed: <span id="incorrectGuesses">
             
           </span>
         </div>
       </div>   
+    </div>
 
     <!-- Will notate the remaining lives left  -->
-    <div class="card">
+    <div class="col-3">
+    <div class="card bg-warning">
         <div class="card-body">
           # of Guesses Remaining: <span id="numGuesses">
     
           </span>
         </div>
       </div>
+    </div>
 
     <!-- Tracking wins  -->
-    <div class="card">
+    <div class="col-3">
+    <div class="card bg-warning">
         <div class="card-body">
           Rounds Won: <span id="winCounter">
       
           </span>
         </div>
       </div>
+    </div>
 
     <!-- Tracking losses  -->
-    <div class="card">
+    <div class="col-3">
+    <div class="card bg-warning">
         <div class="card-body">
           Rounds Lost: <span id="lossCounter">
       
           </span>
         </div>
       </div>
+    </div>
+  </div>
 
   <!-- Container Div  -->
   </div>
