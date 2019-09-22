@@ -7,7 +7,7 @@ var rapperSongs = [
     {songName:'pissed', songURL:'https://www.youtube.com/watch?v=9O1uBz8SK5w'}, 
     {songName:'tempo', songURL:'https://www.youtube.com/watch?v=Srq1FqFPwj0'}, 
     {songName:'anaconda', songURL:'https://www.youtube.com/watch?v=LDZX4ooRsWs'},
-    {songName:'starships,', songURL: 'https://www.youtube.com/watch?v=SeIJmciN8mo'},
+    {songName:'starships', songURL: 'https://www.youtube.com/watch?v=SeIJmciN8mo'},
     {songName:'drip', songURL:'https://www.youtube.com/watch?v=H4Hb6HcCm_E'},
     {songName:'yuso', songURL:'https://www.youtube.com/watch?v=itohm9OYUz4'},
     {songName:'realer', songURL:'https://www.youtube.com/watch?v=lDWeob50YY8'},
@@ -105,7 +105,7 @@ function roundComplete() {
     // Check if lost 
     else if (guessesRemaining === 0) {
         lossCount++;
-        alert('Loser! The song ' + chosenSongName + ' can be enjoyed at ' + chosenSongURL);
+        alert('Loser! The song is ' + chosenSongName);
 
     // Update counter 
     document.getElementById('lossCounter').innerHTML = lossCount;
