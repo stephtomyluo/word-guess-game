@@ -99,7 +99,9 @@ function roundComplete() {
     // Check if won 
     if (lettersInWord.toString() == blanksAndSuccesses.toString()) {
         winCount++;
-        // alert('Winner! The song ' + chosenSongName + ' can be enjoyed at ' + chosenSongURL);
+        
+    // alert('Winner! The song ' + chosenSongName + ' can be enjoyed at ' + chosenSongURL);
+
     // Make the hidden div appear 
         document.getElementById('winna').classList.remove('d-none')
         document.getElementById('songLink').setAttribute('href', chosenSongURL)
