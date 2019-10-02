@@ -80,9 +80,14 @@ function checkLetters(letter) {
 
     // Letter not in word 
     else {
-        wrongLetters.push(letter);
-        guessesRemaining--
-    }
+    // If wrong letter has already been pressed, do not allow it to be pressed again or dock points
+
+        if (!wrongLetters.includes(letter)) {
+                wrongLetters.push(letter);
+                guessesRemaining--
+            }
+        }
+
 
     // Testing/debugging 
     console.log(blanksAndSuccesses);
@@ -94,7 +99,11 @@ function roundComplete() {
     // Check if won 
     if (lettersInWord.toString() == blanksAndSuccesses.toString()) {
         winCount++;
-        alert('Winner! The song ' + chosenSongName + ' can be enjoyed at ' + chosenSongURL);
+        // alert('Winner! The song ' + chosenSongName + ' can be enjoyed at ' + chosenSongURL);
+    // Make the hidden div appear 
+        document.getElementById('winna').classList.remove('d-none')
+        document.getElementById('songLink').setAttribute('href', chosenSongURL)
+
 // Want to play song
 
     // Update counter 
@@ -138,3 +147,4 @@ document.onkeyup = function(event) {
     console.log(checkChar);
     // If wanted to ding them - move checkChar to checkLetters 
 }
+
