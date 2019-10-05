@@ -99,20 +99,18 @@ function roundComplete() {
     // Check if won 
     if (lettersInWord.toString() == blanksAndSuccesses.toString()) {
         winCount++;
-        
+
     // alert('Winner! The song ' + chosenSongName + ' can be enjoyed at ' + chosenSongURL);
 
     // Make the hidden div appear 
         document.getElementById('winna').classList.remove('d-none')
         document.getElementById('songLink').setAttribute('href', chosenSongURL)
 
-// Want to play song
-
     // Update counter 
     document.getElementById('winCounter').innerHTML = winCount;
     startGame();
     }
-
+    
     // Check if lost 
     else if (guessesRemaining === 0) {
         lossCount++;
@@ -122,6 +120,7 @@ function roundComplete() {
     document.getElementById('lossCounter').innerHTML = lossCount;
     startGame();
     }
+
 
     // Update  stats
     document.getElementById('numGuesses').innerHTML = guessesRemaining;
@@ -150,3 +149,7 @@ document.onkeyup = function(event) {
     // If wanted to ding them - move checkChar to checkLetters 
 }
 
+// When you click on the winning song link, it disappears 
+document.getElementById('songLink').addEventListener('click', function(event) {
+document.getElementById('songLink').classList.add('d-none')
+});
